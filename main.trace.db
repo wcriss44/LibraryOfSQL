@@ -1,0 +1,49 @@
+2017-03-09 01:39:39 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT ID FROM USERS WHERE NAME = ?,[*] PASSWORD = ? "; SQL statement:
+SELECT id FROM users WHERE name = ?, password = ? [42000-191]
+2017-03-09 02:41:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column count does not match; SQL statement:
+INSERT INTO books VALUES(NULL, ?, ?, ?, ?) [21002-191]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.dml.Insert.prepare(Insert.java:265)
+	at org.h2.command.Parser.prepareCommand(Parser.java:257)
+	at org.h2.engine.Session.prepareLocal(Session.java:560)
+	at org.h2.engine.Session.prepareCommand(Session.java:501)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1188)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:73)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:276)
+	at com.novauc.Main.insertBook(Main.java:318)
+	at com.novauc.Main.lambda$main$10(Main.java:273)
+	at spark.RouteImpl$1.handle(RouteImpl.java:58)
+	at spark.webserver.MatcherFilter.doFilter(MatcherFilter.java:162)
+	at spark.webserver.JettyHandler.doHandle(JettyHandler.java:61)
+	at org.eclipse.jetty.server.session.SessionHandler.doScope(SessionHandler.java:189)
+	at org.eclipse.jetty.server.handler.ScopedHandler.handle(ScopedHandler.java:141)
+	at org.eclipse.jetty.server.handler.HandlerList.handle(HandlerList.java:52)
+	at org.eclipse.jetty.server.handler.HandlerWrapper.handle(HandlerWrapper.java:119)
+	at org.eclipse.jetty.server.Server.handle(Server.java:517)
+	at org.eclipse.jetty.server.HttpChannel.handle(HttpChannel.java:302)
+	at org.eclipse.jetty.server.HttpConnection.onFillable(HttpConnection.java:242)
+	at org.eclipse.jetty.io.AbstractConnection$ReadCallback.succeeded(AbstractConnection.java:245)
+	at org.eclipse.jetty.io.FillInterest.fillable(FillInterest.java:95)
+	at org.eclipse.jetty.io.SelectChannelEndPoint$2.run(SelectChannelEndPoint.java:75)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.produceAndRun(ExecuteProduceConsume.java:213)
+	at org.eclipse.jetty.util.thread.strategy.ExecuteProduceConsume.run(ExecuteProduceConsume.java:147)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool.runJob(QueuedThreadPool.java:654)
+	at org.eclipse.jetty.util.thread.QueuedThreadPool$3.run(QueuedThreadPool.java:572)
+	at java.lang.Thread.run(Thread.java:745)
+2017-03-09 02:43:52 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DELETE FROM BOOKS WHERE ID = ?,[*] USER_ID = ? "; SQL statement:
+DELETE FROM books WHERE id = ?, user_id = ? [42000-191]
+2017-03-09 02:50:27 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DELETE FROM BOOKS ([*]WHERE ID = ? AND USER_ID = ?) "; SQL statement:
+DELETE FROM books (WHERE id = ? AND user_id = ?) [42000-191]
+2017-03-09 02:53:32 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "USERS[*] SELECT * FROM BOOKS"; expected "UPDATE, USE, {"; SQL statement:
+USERS SELECT * FROM BOOKS [42001-191]
+2017-03-09 03:40:24 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "USERS[*] SELECT * FROM BOOKS"; expected "UPDATE, USE, {"; SQL statement:
+USERS SELECT * FROM BOOKS [42001-191]

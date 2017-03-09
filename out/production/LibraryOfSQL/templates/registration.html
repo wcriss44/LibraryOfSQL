@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Library of SQL</title>
+        <link rel="stylesheet" href="style.css" type="text/css">
+    </head>
+    <body>
+        <nav>
+            <ul class="nav">
+                <li>
+                    <a title="home" href="home.html">Home</a>
+                </li>
+            </ul>
+            <form action="/login" method="post">
+                <input type="text" placeholder="Account:" name="userName">
+                <input type="password" placeholder="Password:" name="password">
+                <button type="submit">Login</button>
+            </form>
+            {{#badPass}}
+            <p style="color:grey">Please enter a valid password!</p>
+            {{/badPass}}
+        </nav>
+        <span class="center-content">
+            <h1>New User Registration</h1>
+            {{#userExists}}
+                <p>User account exist! Try a new one!</p>
+            {{/userExists}}
+            <form action="/register" method="post">
+                <div>
+                    <input type="text" placeholder="User Name:" name="userName">
+                    <input type="password" placeholder="Password:" name="password">
+                </div>
+                <div>
+                    <select name="bookInterest">
+                        <option selected disabled>Book Interest</option>
+                        <option value="Classic">Classic</option>
+                        <option value="Sci-fi">Sci-Fi</option>
+                        <option value="Modern">Modern</option>
+                        <option value="Horror">Horror</option>
+                        <option value="Mystery">Mystery</option>
+                        <option value="Reference">Reference</option>
+                    </select>
+                </div>
+                <hr/>
+                <div>
+                    <button type="submit">Register</button>
+                </div>
+            </form>
+        </span>
+    </body>
+</html>

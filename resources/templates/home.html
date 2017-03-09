@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Library of SQL</title>
+        <link rel="stylesheet" href="style.css" type="text/css">
+    </head>
+    <body>
+        <nav>
+            <ul class="nav">
+                <li>
+                    <a title="home" href="home.html">Home</a>
+                </li>
+                <li>
+                    <a title="viewAll" href="viewall.html">View All</a>
+                </li>
+                <li>
+                    <a title="logout" href="logout.html">Logout</a>
+                </li>
+            </ul>
+        </nav>
+        <form action="/add-book" method="post">
+            <input type="text" placeholder="Book title: " name="title">
+            <input type="text" placeholder="Author: " name="author">
+            <select name="genre">
+                <option selected disabled>Genre</option>
+                <option value="Classic">Classic</option>
+                <option value="Sci-fi">Sci-Fi</option>
+                <option value="Modern">Modern</option>
+                <option value="Horror">Horror</option>
+                <option value="Mystery">Mystery</option>
+                <option value="Reference">Reference</option>
+            </select>
+            <button type="submit">Add book</button>
+        </form>
+        <h1>All books</h1>
+        {{#books}}
+        <h5>{{title}}</h5>
+        <p>{{author}} | {{genre}}</p>
+        <form action="/delete" method="post">
+            <input type="hidden" value="{{id}}" name="id">
+            <button type="submit">Delete</button>
+        </form>
+        <form action="/edit" method="post">
+            <input type="hidden" value="{{id}}" name="bookId">
+            <input type="text" value="{{title}}" name="title">
+            <input type="text" value="{{author}}" name="author">
+            <input type="text" value="{{genre}}" name="genre">
+            <button type="submit">Edit</button>
+        </form>
+        {{/books}}
+    </body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Library of SQL</title>
+        <link rel="stylesheet" href="style.css" type="text/css">
+    </head>
+    <body>
+        <nav>
+            <ul class="nav">
+                <li>
+                    <a title="home" href="home.html">Home</a>
+                </li>
+            </ul>
+            <form action="/login" method="post">
+                <input type="text" placeholder="Account:" name="userName">
+                <input type="password" placeholder="Password:" name="password">
+                <button type="submit">Login</button>
+            </form>
+            {{#badPass}}
+            <p style="color:grey">Please enter a valid password!</p>
+            {{/badPass}}
+        </nav>
+    </body>
+</html>

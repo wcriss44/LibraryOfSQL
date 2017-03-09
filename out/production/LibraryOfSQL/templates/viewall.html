@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Library of SQL</title>
+        <link rel="stylesheet" href="style.css" type="text/css">
+    </head>
+    <body>
+        <nav>
+            <ul class="nav">
+                <li>
+                    <a title="home" href="home.html">Home</a>
+                </li>
+                <li>
+                    <a title="viewAll" href="viewall.html">View All</a>
+                </li>
+                <li>
+                    <a title="logout" href="logout.html">Logout</a>
+                </li>
+            </ul>
+        </nav>
+        <h1>All books</h1>
+        {{#books}}
+            <h5>{{title}}</h5>
+            <p>{{author}} | {{genre}}</p>
+            <p>Added by: {{reader}}</p>
+            <form action="/add-book" method="post">
+                <input type="hidden" value="{{title}}" name="title">
+                <input type="hidden" value="{{author}}" name="author">
+                <input type="hidden" value="{{genre}}" name="genre">
+                <button type="submit">Add</button>
+            </form>
+        {{/books}}
+    </body>
+</html>
