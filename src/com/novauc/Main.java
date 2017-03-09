@@ -318,13 +318,24 @@ public class Main {
             return new User(userName, password, interest, id);
         }
     }
-    public static void insertBook(Connection connection, String title, String genre, String author,  int userId) throws SQLException{
+    public static int insertBook(Connection connection, String title, String genre, String author,  int userId) throws SQLException{
         PreparedStatement statement = connection.prepareStatement("INSERT INTO books VALUES(NULL, ?, ?, ?, ?)");
         statement.setString(1, title);
         statement.setString(2, genre);
         statement.setString(3, author);
         statement.setInt(4, userId);
         statement.execute();
+
+        PreparedStatement getId = connection.prepareStatement("SELECT id FROM books WHERE user_id = ?");
+        getId.setInt(1, userId);
+
+        ResultSet results = getId.executeQuery();
+
+        int id = 0;
+        while(results.next()){
+            id = results.getInt("id");
+        }
+        return id;
     }
     public static void updateBook(Connection connection,int bookId, String title, String genre, String author, int userId) throws SQLException{
         PreparedStatement statement = connection.prepareStatement("UPDATE books SET title = ?, genre = ?, author = ?  WHERE (user_id = ? AND id = ?)");
@@ -345,7 +356,6 @@ public class Main {
         PreparedStatement statement = connection.prepareStatement("SELECT * FROM books INNER JOIN users ON users.id = books.user_id WHERE (users.id = ? AND books.id = ?) ");
         statement.setInt(1, userId);
         statement.setInt(2, bookId);
-        //May need to remove above statement and the ? in SQL
 
         Book book = null;
         String title = null;
@@ -355,8 +365,8 @@ public class Main {
         ResultSet results = statement.executeQuery();
         while(results.next()){
             title = results.getString("title");
-            genre = results.getString("title");
-            author = results.getString("title");
+            genre = results.getString("genre");
+            author = results.getString("author");
             id = results.getInt("id");
         }
         if (title != null){
